@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "722789917194",
+    "firebase_url": "https://animalfeeder-cae79.firebaseio.com",
+    "project_id": "animalfeeder-cae79",
+    "storage_bucket": "animalfeeder-cae79.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722789917194:android:d3d0ae58fbbe887e",
+        "android_client_info": {
+          "package_name": "com.example.cfgs.animalfeeder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "722789917194-j1lf6etv3qdnhknk2gf47et7406kecnr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGLyLkaOgxYhCVQRWzRD-LLv5cjoXswpg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
