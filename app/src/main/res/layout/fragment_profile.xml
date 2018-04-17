@@ -8,10 +8,9 @@
     tools:context=".fragments.ProfileFragment"
     android:background="@color/white">
 
-
         <ImageView
             android:id="@+id/imgvProfile"
-            app:layout_constraintTop_toTopmOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_width="150dp"

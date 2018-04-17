@@ -8,123 +8,14 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
-    <com.brouding.blockbutton.BlockButton
-        android:id="@+id/btnProfile"
-        android:layout_marginTop="25dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:pushDepthDp="6"
-        app:buttonColor="@color/blue"
-        app:buttonGapColor="@color/cardview_dark_background"
-        app:buttonDisabledColor="#999999"
-        app:buttonDisabledGapColor="@color/cardview_dark_background"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/profile"/>
-
-    </com.brouding.blockbutton.BlockButton>
-
-    <com.brouding.blockbutton.BlockButton
-        android:id="@+id/btnSettings"
-        android:layout_marginTop="25dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:pushDepthDp="6"
-        app:buttonColor="@color/blue"
-        app:buttonGapColor="@color/cardview_dark_background"
-        app:buttonDisabledColor="#999999"
-        app:buttonDisabledGapColor="@color/cardview_dark_background"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/settings"/>
-
-    </com.brouding.blockbutton.BlockButton>
-
-    <com.brouding.blockbutton.BlockButton
-        android:id="@+id/btnBowl"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btnProfile"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:pushDepthDp="6"
-        app:buttonColor="@color/blue"
-        app:buttonGapColor="@color/cardview_dark_background"
-        app:buttonDisabledColor="#999999"
-        app:buttonDisabledGapColor="@color/cardview_dark_background"
+    <android.support.constraint.ConstraintLayout
+        android:layout_margin="16dp"
+        android:id="@+id/containerFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/bowl"/>
+    </android.support.constraint.ConstraintLayout>
 
-    </com.brouding.blockbutton.BlockButton>
-
-    <com.brouding.blockbutton.BlockButton
-        android:id="@+id/btnList"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btnBowl"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:pushDepthDp="6"
-        app:buttonColor="@color/blue"
-        app:buttonGapColor="@color/cardview_dark_background"
-        app:buttonDisabledColor="#999999"
-        app:buttonDisabledGapColor="@color/cardview_dark_background"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/list"/>
-
-    </com.brouding.blockbutton.BlockButton>
-
-    <com.brouding.blockbutton.BlockButton
-        android:id="@+id/btnChat"
-        android:layout_marginTop="25dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btnBowl"
-        app:layout_constraintRight_toRightOf="parent"
-        app:pushDepthDp="6"
-        app:buttonColor="@color/blue"
-        app:buttonGapColor="@color/cardview_dark_background"
-        app:buttonDisabledColor="#999999"
-        app:buttonDisabledGapColor="@color/cardview_dark_background"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/chat"/>
-
-    </com.brouding.blockbutton.BlockButton>
 
 
 </android.support.constraint.ConstraintLayout>
