@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AnimalFeeder</string>
+    <string name="user_add">User add</string>
+    <string name="user_error">The user can´t be created</string>
+    <string name="name">Name</string>
+    <string name="animal">Animal</string>
+    <string name="save">Save</string>
+    <string name="log_out">Log Out</string>
 </resources>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ProfileFragment"
+    android:background="@color/white">
+
+
+        <ImageView
+            android:id="@+id/imgvProfile"
+            app:layout_constraintTop_toTopmOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/profile"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tilName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/imgvProfile"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/name" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tilAnimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tilName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/animal" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <com.brouding.blockbutton.BlockButton
+            android:id="@+id/btnSave"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/tilAnimal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:pushDepthDp="6"
+            app:buttonColor="@color/blue"
+            app:buttonGapColor="@color/cardview_dark_background"
+            app:buttonDisabledColor="#999999"
+            app:buttonDisabledGapColor="@color/cardview_dark_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save"
+                android:textAllCaps="false"/>
+
+        </com.brouding.blockbutton.BlockButton>
+
+
+</android.support.constraint.ConstraintLayout>
