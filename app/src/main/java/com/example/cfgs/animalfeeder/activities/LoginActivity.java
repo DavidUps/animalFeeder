@@ -57,7 +57,6 @@ public class LoginActivity extends AppCompatActivity {
 
             if (resultCode == RESULT_OK){
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                Toast.makeText(this, R.string.user_add, Toast.LENGTH_SHORT).show();
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
                 DatabaseReference userReference = firebaseDatabase.getReference("users/"+user.getUid());
                 userReference.child("name").setValue(user.getDisplayName());

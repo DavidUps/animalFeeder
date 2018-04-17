@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.brouding.blockbutton.BlockButton;
 import com.example.cfgs.animalfeeder.R;
+import com.example.cfgs.animalfeeder.activities.MainActivity;
 
 public class MainFragment extends Fragment {
 
@@ -49,7 +50,7 @@ public class MainFragment extends Fragment {
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                profileFragment();
+                ((MainActivity) getActivity()).profileFragment();
             }
         });
 
@@ -57,32 +58,34 @@ public class MainFragment extends Fragment {
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ((MainActivity) getActivity()).settingFragment();
+
             }
         });
 
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ((MainActivity) getActivity()).listFragment();
             }
         });
 
         btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ((MainActivity) getActivity()).chatFragment();
+
             }
         });
 
         btnBowl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ((MainActivity) getActivity()).bowlFragment();
             }
         });
 
         return view;
-    }
-
-    public void profileFragment() {
-        
     }
 
     public interface OnFragmentInteractionListener {

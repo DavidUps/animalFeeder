@@ -9,6 +9,8 @@
     tools:context=".fragments.MainFragment">
 
 
+    <!--REFACTOR BTN LIKE PROFILE-->
+
     <com.brouding.blockbutton.BlockButton
         android:id="@+id/btnProfile"
         android:layout_marginTop="25dp"
