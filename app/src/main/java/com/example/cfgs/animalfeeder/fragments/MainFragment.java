@@ -31,7 +31,6 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         btnProfile  = view.findViewById(R.id.btnProfile);
@@ -70,7 +69,7 @@ public class MainFragment extends Fragment {
             }
         });
 
-        btnChat.setOnClickListener(new View.OnClickListener() {
+       btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ((MainActivity) getActivity()).chatFragment();
@@ -78,7 +77,7 @@ public class MainFragment extends Fragment {
             }
         });
 
-        btnBowl.setOnClickListener(new View.OnClickListener() {
+       btnBowl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ((MainActivity) getActivity()).bowlFragment();
