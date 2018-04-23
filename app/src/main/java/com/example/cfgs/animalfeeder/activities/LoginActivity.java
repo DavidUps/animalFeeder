@@ -1,11 +1,13 @@
 package com.example.cfgs.animalfeeder.activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.cfgs.animalfeeder.R;
+import com.example.cfgs.animalfeeder.io.DownloadProfileImage;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
@@ -61,10 +63,15 @@ public class LoginActivity extends AppCompatActivity {
                 DatabaseReference userReference = firebaseDatabase.getReference("users/"+user.getUid());
                 userReference.child("name").setValue(user.getDisplayName());
                 userReference.child("email").setValue(user.getEmail());
+
+                String[] url = {FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString()};
+                new DownloadProfileImage().execute(url);
                 startActivity(new Intent(this, MainActivity.class));
             }else{
                 Toast.makeText(this, R.string.user_error, Toast.LENGTH_SHORT).show();
             }
         }
     }
+
+
 }

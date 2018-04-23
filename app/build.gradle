@@ -36,6 +36,9 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:3.2.2'
     //Database
     implementation 'com.google.firebase:firebase-database:11.8.0'
+    //Storage
+    implementation 'com.google.firebase:firebase-storage:11.8.0'
+    implementation 'com.google.firebase:firebase-core:11.8.0'
 }
 //Firebase
 apply plugin: 'com.google.gms.google-services'

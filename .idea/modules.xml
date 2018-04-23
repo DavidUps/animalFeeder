@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/animalFeeder.iml" filepath="$PROJECT_DIR$/animalFeeder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Animal_Feeder.iml" filepath="$PROJECT_DIR$/Animal_Feeder.iml" />
+      <module fileurl="file://C:\Users\ArribasD\Documents\GitHub\Animal_Feeder\animalFeeder.iml" filepath="C:\Users\ArribasD\Documents\GitHub\Animal_Feeder\animalFeeder.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\ArribasD\Documents\GitHub\Animal_Feeder\app\app.iml" filepath="C:\Users\ArribasD\Documents\GitHub\Animal_Feeder\app\app.iml" />
     </modules>
   </component>
 </project>
