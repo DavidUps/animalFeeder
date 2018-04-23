@@ -72,7 +72,7 @@ public class ProfileFragment extends Fragment {
         storage = FirebaseStorage.getInstance("gs://animalfeeder-cae79.appspot.com/");
 
         //Firebase Profile Imagen Reference.
-        StorageReference downloadImg = storage.getReference("profileImage/"+FirebaseAuth.getInstance().getCurrentUser()+".jpg");
+        StorageReference downloadImg = storage.getReference("profileImage/"+FirebaseAuth.getInstance().getCurrentUser().getUid().toString()+".jpg");
 
         //Download Profile Photo.
         Glide.with(getActivity())

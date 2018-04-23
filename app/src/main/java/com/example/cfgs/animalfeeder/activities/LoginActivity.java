@@ -11,6 +11,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.cfgs.animalfeeder.R;
+import com.example.cfgs.animalfeeder.io.DownloadProfileImage;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -81,6 +82,9 @@ public class LoginActivity extends AppCompatActivity {
                 DatabaseReference userReference = firebaseDatabase.getReference("users/"+user.getUid());
                 userReference.child("name").setValue(user.getDisplayName());
                 userReference.child("email").setValue(user.getEmail());
+
+                String[] url = {FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString()};
+                new DownloadProfileImage().execute(url);
 
                 startActivity(new Intent(this, MainActivity.class));
             }else{

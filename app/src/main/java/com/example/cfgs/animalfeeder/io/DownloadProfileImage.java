@@ -41,7 +41,7 @@ public class DownloadProfileImage extends AsyncTask<String, Void, Boolean> {
             is = conn.getInputStream();
             bis = new BufferedInputStream(is, 8192);
             bm = BitmapFactory.decodeStream(bis);
-            //Subir la img
+            //Upload the image
             FirebaseStorage storage  = FirebaseStorage.getInstance("gs://animalfeeder-cae79.appspot.com/");
 
             StorageReference uploadImg = storage.getReference("profileImage");
