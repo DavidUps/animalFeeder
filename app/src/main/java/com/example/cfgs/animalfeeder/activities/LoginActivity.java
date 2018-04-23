@@ -1,30 +1,50 @@
 package com.example.cfgs.animalfeeder.activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.cfgs.animalfeeder.R;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnPausedListener;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageMetadata;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 123;
+    FirebaseStorage storage;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        storage  = FirebaseStorage.getInstance("gs://animalfeeder-cae79.appspot.com/");
+
 
         if (FirebaseAuth.getInstance().getCurrentUser() != null){
             startActivity(new Intent(this, MainActivity.class));
@@ -61,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                 DatabaseReference userReference = firebaseDatabase.getReference("users/"+user.getUid());
                 userReference.child("name").setValue(user.getDisplayName());
                 userReference.child("email").setValue(user.getEmail());
+
                 startActivity(new Intent(this, MainActivity.class));
             }else{
                 Toast.makeText(this, R.string.user_error, Toast.LENGTH_SHORT).show();
