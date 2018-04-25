@@ -1,5 +1,6 @@
 package com.example.cfgs.animalfeeder.fragments;
 
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -10,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -22,6 +24,11 @@ import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -36,12 +43,14 @@ public class ProfileFragment extends Fragment {
     private final int GALLERY = 1;
 
     private OnFragmentInteractionListener mListener;
-    //Buttons
+    //XML References
     BlockButton btnSave, btnLogOut;
     ImageView imgProfile;
+    EditText etProfileName, etProfilePet;
 
+    //Firebase References
     FirebaseStorage storage;
-
+    FirebaseDatabase database;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -64,15 +73,20 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        btnSave    = view.findViewById(R.id.btnSave);
-        btnLogOut  = view.findViewById(R.id.btnLogOut);
-        imgProfile = view.findViewById(R.id.imgvProfile);
+        btnSave         = view.findViewById(R.id.btnSave);
+        btnLogOut       = view.findViewById(R.id.btnLogOut);
+        imgProfile      = view.findViewById(R.id.imgvProfile);
+        etProfileName   = view.findViewById(R.id.etProfileName);
+        etProfilePet = view.findViewById(R.id.etProfilePet);
 
-        //Firebase Main Reference.
+        //Firebase Storage Reference.
         storage = FirebaseStorage.getInstance("gs://animalfeeder-cae79.appspot.com/");
-
-        //Firebase Profile Imagen Reference.
         StorageReference downloadImg = storage.getReference("profileImage/"+FirebaseAuth.getInstance().getCurrentUser().getUid().toString()+".jpg");
+
+        //Firebase Database Reference.
+        database = FirebaseDatabase.getInstance();
+        final DatabaseReference profileRef = database.getReference("users").child(FirebaseAuth.getInstance().getUid().toString());
+
 
         //Download Profile Photo.
         Glide.with(getActivity())
@@ -95,6 +109,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        //Take Profile Photo
         imgProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,7 +127,40 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(etProfileName.getText().equals("")){
+                    etError();
+                }else{
+                    profileRef.child("name").setValue(etProfileName.getText().toString());
+                }
+                if (etProfilePet.getText().equals("")){
+                    etError();
+                }else{
+                    profileRef.child("pet").setValue(etProfilePet.getText().toString());
+                }
+            }
+        });
+
+        //Get Name and Animal.
+        profileRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                etProfileName.setText(dataSnapshot.child("name").getValue().toString());
+                etProfilePet.setText(dataSnapshot.child("pet").getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         return view;
+    }
+
+    private void etError() {
+        Toast.makeText(getActivity(), R.string.etError, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -127,8 +175,8 @@ public class ProfileFragment extends Fragment {
             if (data != null) {
                 Uri contentUri = data.getData();
                 try {
-                    //Subir la imagen a Firebase.
-                    //Se crea un bitmap, un ByteArrayOutputStream, se hace un compress y en el UploadTask se pone la ruta y se castea.
+                    //Upload Image To Firebase.
+                    //Create a bitmap, a ByteArrayOutputStream, make a compress and in the UploadTask the route is put and casted.
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), contentUri);
                     imgProfile.setImageBitmap(bitmap);
                     ByteArrayOutputStream bout = new ByteArrayOutputStream();
@@ -141,6 +189,8 @@ public class ProfileFragment extends Fragment {
             }
         }
     }
+
+
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name

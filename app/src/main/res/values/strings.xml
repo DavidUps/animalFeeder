@@ -4,12 +4,11 @@
     <string name="user_add">User add</string>
     <string name="user_error">The user can´t be created</string>
     <string name="name">Name</string>
-    <string name="animal">Animal</string>
+    <string name="pet">Pet</string>
     <string name="save">Save</string>
     <string name="log_out">Log Out</string>
     <string name="correct_logout">You have left correctly</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="hour">Hour</string>
+    <string name="day">Day</string>
+    <string name="etError">You can´t save empty field</string>
 </resources>

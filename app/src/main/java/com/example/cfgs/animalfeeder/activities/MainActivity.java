@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.brouding.blockbutton.BlockButton;
 import com.example.cfgs.animalfeeder.R;
+import com.example.cfgs.animalfeeder.fragments.ChatFragment;
 import com.example.cfgs.animalfeeder.fragments.ListFragment;
 import com.example.cfgs.animalfeeder.fragments.MainFragment;
 import com.example.cfgs.animalfeeder.fragments.ProfileFragment;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
      * Open Bowl Fragment
      */
     public void bowlFragment(){
-        getSupportFragmentManager().beginTransaction().replace(R.id.containerFragment, new ProfileFragment()).addToBackStack("Bowl").commit();
+        Toast.makeText(this, "Proximamente", Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
      * Open Chat Fragment
      */
     public void chatFragment(){
-        getSupportFragmentManager().beginTransaction().replace(R.id.containerFragment, new ProfileFragment()).addToBackStack("Chat").commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.containerFragment, new ChatFragment()).addToBackStack("Chat").commit();
     }
 
     /**
