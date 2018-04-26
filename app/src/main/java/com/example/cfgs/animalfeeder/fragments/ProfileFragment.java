@@ -69,6 +69,19 @@ public class ProfileFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        StorageReference downloadImg = storage.getReference("profileImage/"+FirebaseAuth.getInstance().getCurrentUser().getUid().toString()+".jpg");
+
+        //Download Profile Photo.
+        Glide.with(getActivity())
+                .using(new FirebaseImageLoader())
+                .load(downloadImg)
+                .error(R.drawable.profile)
+                .into(imgProfile);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
@@ -86,14 +99,6 @@ public class ProfileFragment extends Fragment {
         //Firebase Database Reference.
         database = FirebaseDatabase.getInstance();
         final DatabaseReference profileRef = database.getReference("users").child(FirebaseAuth.getInstance().getUid().toString());
-
-
-        //Download Profile Photo.
-        Glide.with(getActivity())
-                .using(new FirebaseImageLoader())
-                .load(downloadImg)
-                .error(R.drawable.profile)
-                .into(imgProfile);
 
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
