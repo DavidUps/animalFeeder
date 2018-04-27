@@ -5,38 +5,77 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!--
+    tvDayParent
+    tvDay
+    tvTimeParent
+    tvTime
+    -->
+
     <TextView
         android:id="@+id/tvDayParent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/day"
+        android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/tvDay"/>
+        app:layout_constraintLeft_toRightOf="@id/glOne"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/glOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tvDayParent"
+        app:layout_constraintLeft_toRightOf="@id/tvDay"/>
 
     <TextView
         android:id="@+id/tvDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/glOne"
+        app:layout_constraintRight_toLeftOf="@id/glTwo"
+        android:text="Monday"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/glTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/tvDayParent"
-        app:layout_constraintRight_toLeftOf="@id/tvTimeParent"/>
+        app:layout_constraintRight_toLeftOf="@id/tvDay"
+        app:layout_constraintLeft_toRightOf="@id/tvHourParent"/>
 
     <TextView
-        android:id="@+id/tvTimeParent"
+        android:id="@+id/tvHourParent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hour"
+        app:layout_constraintLeft_toRightOf="@id/glTwo"
+        app:layout_constraintRight_toLeftOf="@id/glThree"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/glThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/tvDay"
-        app:layout_constraintRight_toLeftOf="@id/tvHour"/>
+        app:layout_constraintRight_toLeftOf="@id/tvHourParent"
+        app:layout_constraintLeft_toRightOf="@id/tvHour"/>
 
     <TextView
         android:id="@+id/tvHour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/tvTimeParent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintLeft_toRightOf="@id/glThree"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="14:50"/>
+
+
 
 </android.support.constraint.ConstraintLayout>

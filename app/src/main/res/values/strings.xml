@@ -11,4 +11,7 @@
     <string name="hour">Hour</string>
     <string name="day">Day</string>
     <string name="etError">You can´t save empty field</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -3,16 +3,14 @@ package com.example.cfgs.animalfeeder.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
-import com.brouding.blockbutton.BlockButton;
 import com.example.cfgs.animalfeeder.R;
 import com.example.cfgs.animalfeeder.fragments.ChatFragment;
 import com.example.cfgs.animalfeeder.fragments.ListFragment;
 import com.example.cfgs.animalfeeder.fragments.MainFragment;
 import com.example.cfgs.animalfeeder.fragments.ProfileFragment;
-import com.example.cfgs.animalfeeder.fragments.SettingFragment;
+import com.example.cfgs.animalfeeder.fragments.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
      * Open Settings Fragment
      */
     public void settingFragment(){
-        getSupportFragmentManager().beginTransaction().replace(R.id.containerFragment, new SettingFragment()).addToBackStack("Setting").commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.containerFragment, new SettingsFragment()).addToBackStack("Setting").commit();
     }
 
     /**
