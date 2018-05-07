@@ -62,6 +62,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * Open Main Fragment
+     */
+    public void mainFragment(){
+        getSupportFragmentManager().beginTransaction().replace(R.id.containerFragment, new MainFragment()).addToBackStack("main").commit();
+    }
+
+    /**
      * Open Main Activity
      */
     public void mainActivity(){

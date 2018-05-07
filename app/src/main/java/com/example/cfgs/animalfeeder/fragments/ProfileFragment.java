@@ -64,13 +64,16 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
+
+        setProfileImage();
+    }
+
+    private void setProfileImage() {
         StorageReference downloadImg = storage.getReference("profileImage/"+FirebaseAuth.getInstance().getCurrentUser().getUid().toString()+".jpg");
 
         //Download Profile Photo.
@@ -91,6 +94,7 @@ public class ProfileFragment extends Fragment {
         imgProfile      = view.findViewById(R.id.imgvProfile);
         etProfileName   = view.findViewById(R.id.etProfileName);
         etProfilePet = view.findViewById(R.id.etProfilePet);
+
 
         //Firebase Storage Reference.
         storage = FirebaseStorage.getInstance("gs://animalfeeder-cae79.appspot.com/");
@@ -145,6 +149,8 @@ public class ProfileFragment extends Fragment {
                 }else{
                     profileRef.child("pet").setValue(etProfilePet.getText().toString());
                 }
+                //((MainActivity) getActivity()).mainFragment();
+
             }
         });
 
@@ -153,7 +159,8 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 etProfileName.setText(dataSnapshot.child("name").getValue().toString());
-                etProfilePet.setText(dataSnapshot.child("pet").getValue().toString());
+                etProfilePet.setText(dataSnapshot.
+                        child("pet").getValue().toString());
             }
 
             @Override

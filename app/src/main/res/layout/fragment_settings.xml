@@ -1,14 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/tilPet"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
-</FrameLayout>
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/etPet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/pet" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/tilRaspberryIp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tilPet">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/etRaspberry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/raspberryIp"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <com.brouding.blockbutton.BlockButton
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:buttonColor="@color/blue"
+        app:buttonDisabledColor="#999999"
+        app:buttonDisabledGapColor="@color/cardview_dark_background"
+        app:buttonGapColor="@color/cardview_dark_background"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:pushDepthDp="6">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:textAllCaps="false" />
+
+    </com.brouding.blockbutton.BlockButton>
+</android.support.constraint.ConstraintLayout>

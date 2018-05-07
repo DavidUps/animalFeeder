@@ -1,29 +1,27 @@
 package com.example.cfgs.animalfeeder.fragments;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.EditText;
 
+import com.brouding.blockbutton.BlockButton;
 import com.example.cfgs.animalfeeder.R;
+import com.example.cfgs.animalfeeder.activities.MainActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link SettingsFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link SettingsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class SettingsFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+    BlockButton btnSave;
+    EditText etPet, etRaspberry;
+    FirebaseDatabase firebaseDatabase;
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -36,25 +34,32 @@ public class SettingsFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        new CountDownTimer(10000, 1000) {
-
-            public void onTick(long millisUntilFinished) {
-                Log.i("Time", "Time: " + millisUntilFinished /1000);
-            }
-
-            public void onFinish() {
-                Toast.makeText(getActivity(), "Tiempo Atras Terminado", Toast.LENGTH_SHORT).show();
-            }
-        }.start();
 
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
+
+        btnSave = view.findViewById(R.id.btnSave);
+        etPet   = view.findViewById(R.id.etPet);
+        etRaspberry = view.findViewById(R.id.etRaspberry);
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        final DatabaseReference profileRef = firebaseDatabase.getReference("users").child(FirebaseAuth.getInstance().getUid().toString());
+
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                profileRef.child("pet").setValue(etPet.getText().toString());
+                profileRef.child("raspberrypiIp").setValue(etRaspberry.getText().toString());
+                //((MainActivity) getActivity()).mainFragment();
+
+            }
+        });
         return view;
     }
 
