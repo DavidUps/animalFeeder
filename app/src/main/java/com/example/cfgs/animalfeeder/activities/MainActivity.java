@@ -10,10 +10,19 @@ import com.example.cfgs.animalfeeder.fragments.ChatFragment;
 import com.example.cfgs.animalfeeder.fragments.ListFragment;
 import com.example.cfgs.animalfeeder.fragments.MainFragment;
 import com.example.cfgs.animalfeeder.fragments.ProfileFragment;
+import com.example.cfgs.animalfeeder.fragments.SetUpOneFragment;
+import com.example.cfgs.animalfeeder.fragments.SetUpTwoFragment;
 import com.example.cfgs.animalfeeder.fragments.SettingsFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
+    FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +31,24 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.containerFragment, new MainFragment()).addToBackStack("Main").commit();
+
+        database = FirebaseDatabase.getInstance();
+        DatabaseReference profileRef = database.getReference("users").child(FirebaseAuth.getInstance().getUid().toString());
+
+        profileRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.child("firstTime").getValue() == null ){
+                    setUpOneFragment();
+                }else{
+                    mainFragment();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
@@ -65,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
      * Open Main Fragment
      */
     public void mainFragment(){
+        DatabaseReference profileRef = database.getReference("users").child(FirebaseAuth.getInstance().getUid().toString());
+        profileRef.child("firstTime").setValue("1");
+
         getSupportFragmentManager().beginTransaction().replace(R.id.containerFragment, new MainFragment()).addToBackStack("main").commit();
     }
 
@@ -73,5 +102,19 @@ public class MainActivity extends AppCompatActivity {
      */
     public void mainActivity(){
         startActivity(new Intent(MainActivity.this, LoginActivity.class));
+    }
+
+    /**
+     * Open Set Up One
+     */
+    public void setUpOneFragment(){
+        getSupportFragmentManager().beginTransaction().replace(R.id.containerFragment, new SetUpOneFragment()).addToBackStack("OneFragment").commit();
+    }
+
+    /**
+     * Open Set Up Two
+     */
+    public void setUpTwoFragment(){
+        getSupportFragmentManager().beginTransaction().replace(R.id.containerFragment, new SetUpTwoFragment()).addToBackStack("TwoFragment").commit();
     }
 }

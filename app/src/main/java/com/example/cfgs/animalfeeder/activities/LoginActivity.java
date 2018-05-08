@@ -18,8 +18,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnPausedListener;
 import com.google.firebase.storage.OnProgressListener;
@@ -37,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 123;
     FirebaseStorage storage;
+    FirebaseDatabase database;
+    DatabaseReference profileRef;
 
 
     @Override
@@ -45,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         storage  = FirebaseStorage.getInstance("gs://animalfeeder-cae79.appspot.com/");
-
+        database = FirebaseDatabase.getInstance();
 
         if (FirebaseAuth.getInstance().getCurrentUser() != null){
             startActivity(new Intent(this, MainActivity.class));
@@ -77,17 +82,16 @@ public class LoginActivity extends AppCompatActivity {
             IdpResponse response = IdpResponse.fromResultIntent(data);
 
             if (resultCode == RESULT_OK){
+                profileRef = database.getReference("users").child(FirebaseAuth.getInstance().getUid().toString());
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                DatabaseReference userReference = firebaseDatabase.getReference("users/"+user.getUid());
-                userReference.child("name").setValue(user.getDisplayName());
-                userReference.child("email").setValue(user.getEmail());
+                profileRef.child("name").setValue(user.getDisplayName());
+                profileRef.child("email").setValue(user.getEmail());
 
+                if ()
                 if(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl() != null){
                     String[] url = {FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString()};
                     new DownloadProfileImage().execute(url);
                 }
-
                 startActivity(new Intent(this, MainActivity.class));
             }else{
                 Toast.makeText(this, R.string.user_error, Toast.LENGTH_SHORT).show();
