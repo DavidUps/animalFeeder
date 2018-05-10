@@ -3,11 +3,13 @@ package com.example.cfgs.animalfeeder.fragments;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.ButtonBarLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.brouding.blockbutton.BlockButton;
 import com.example.cfgs.animalfeeder.R;
 import com.example.cfgs.animalfeeder.activities.MainActivity;
 
@@ -21,6 +23,7 @@ import com.example.cfgs.animalfeeder.activities.MainActivity;
  */
 public class SetUpOneFragment extends Fragment {
 
+    BlockButton btnNext;
     private OnFragmentInteractionListener mListener;
 
     public SetUpOneFragment() {
@@ -40,12 +43,13 @@ public class SetUpOneFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_set_up_one, container, false);
 
-        Button btn = view.findViewById(R.id.btnSetUpOne);
+        btnNext = view.findViewById(R.id.btnSetUpOne);
 
-        btn.setOnClickListener(new View.OnClickListener() {
+        btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).setUpTwoFragment();
+                ((MainActivity)getActivity()).setUpTwoFragment();
+
             }
         });
 

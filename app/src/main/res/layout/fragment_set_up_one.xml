@@ -1,20 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.constraint.ConstraintLayout
+    android:layout_margin="16dp"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.SetUpOneFragment">
+    tools:context=".fragments.SetUpOneFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rasberry pi Settings"/>
-
-    <Button
-        android:id="@+id/btnSetUpOne"
+        android:id="@+id/tvSetUpOne"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Next"/>
-</LinearLayout>
+        android:text="@string/raspberryIp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="26dp"/>
+
+    <ImageView
+        android:id="@+id/ivSetUpOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/raspberry"
+        app:layout_constraintTop_toBottomOf="@id/tvSetUpOne"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/tilRaspberryIpSetUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ivSetUpOne">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/etRaspberryIpSetUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/raspberryIp"
+            android:inputType="number"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <com.brouding.blockbutton.BlockButton
+        android:id="@+id/btnSetUpOne"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:buttonColor="@color/blue"
+        app:buttonDisabledColor="#999999"
+        app:buttonDisabledGapColor="@color/cardview_dark_background"
+        app:buttonGapColor="@color/cardview_dark_background"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:pushDepthDp="6">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fui_next_default"
+            android:textAllCaps="false" />
+
+    </com.brouding.blockbutton.BlockButton>
+
+</android.support.constraint.ConstraintLayout>

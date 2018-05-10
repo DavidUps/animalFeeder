@@ -8,4 +8,5 @@
     <color name="yellow">#F0AE24</color>
     <color name="red">#EA574B</color>
     <color name="white">#F1E4DB</color>
+    <color name="white_clean">#FFFFFF</color>
 </resources>

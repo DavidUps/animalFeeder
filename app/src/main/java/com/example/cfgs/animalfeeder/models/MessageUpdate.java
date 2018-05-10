@@ -1,21 +1,19 @@
 package com.example.cfgs.animalfeeder.models;
 
-import com.google.firebase.storage.StorageReference;
-
 import java.util.HashMap;
 import java.util.Map;
 
-public class Messages {
+public class MessageUpdate {
     String name;
     String pet;
     String message;
-    String imgProfile;
+    String idProfile;
 
-    public Messages(String name, String pet, String message, String imgProfile) {
+    public MessageUpdate(String name, String pet, String message, String idProfile) {
         this.name = name;
         this.pet = pet;
         this.message = message;
-        this.imgProfile = imgProfile;
+        this.idProfile = idProfile;
     }
 
     public String getName() {
@@ -42,12 +40,12 @@ public class Messages {
         this.message = message;
     }
 
-    public String  getImgProfile() {
-        return imgProfile;
+    public String getIdProfile() {
+        return idProfile;
     }
 
-    public void setImgProfile(String imgProfile) {
-        this.imgProfile = imgProfile;
+    public void setIdProfile(String idProfile) {
+        this.idProfile = idProfile;
     }
 
     public Map<String, Object> toMap() {
@@ -55,7 +53,7 @@ public class Messages {
         result.put("name", name);
         result.put("pet", pet);
         result.put("message", message);
-        result.put("idProfile", imgProfile);
+        result.put("idProfile", idProfile);
 
         return result;
     }

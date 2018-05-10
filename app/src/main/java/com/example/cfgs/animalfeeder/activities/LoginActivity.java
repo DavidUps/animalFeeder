@@ -87,7 +87,6 @@ public class LoginActivity extends AppCompatActivity {
                 profileRef.child("name").setValue(user.getDisplayName());
                 profileRef.child("email").setValue(user.getEmail());
 
-                if ()
                 if(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl() != null){
                     String[] url = {FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString()};
                     new DownloadProfileImage().execute(url);
