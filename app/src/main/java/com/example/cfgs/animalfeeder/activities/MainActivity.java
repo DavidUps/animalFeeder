@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
      * Open Main Activity
      */
     public void mainActivity(){
-        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        startActivity(new Intent(MainActivity.this, MainActivity.class));
     }
 
     /**
@@ -116,5 +116,12 @@ public class MainActivity extends AppCompatActivity {
      */
     public void setUpTwoFragment(){
         getSupportFragmentManager().beginTransaction().replace(R.id.containerFragment, new SetUpTwoFragment()).addToBackStack("TwoFragment").commit();
+    }
+
+    /**
+     * Open Login Activity
+     */
+    public void loginActivity(){
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
     }
 }

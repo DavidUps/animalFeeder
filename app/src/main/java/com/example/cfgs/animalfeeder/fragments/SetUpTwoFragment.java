@@ -8,11 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.brouding.blockbutton.BlockButton;
 import com.example.cfgs.animalfeeder.R;
 import com.example.cfgs.animalfeeder.activities.MainActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class SetUpTwoFragment extends Fragment {
@@ -20,6 +24,9 @@ public class SetUpTwoFragment extends Fragment {
     BlockButton btnNext,btnDog,btnCat;
     private OnFragmentInteractionListener mListener;
     ImageView ivSetUpTwo;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference userRef;
+    EditText etPetName;
 
     public SetUpTwoFragment() {
     }
@@ -42,7 +49,13 @@ public class SetUpTwoFragment extends Fragment {
         btnCat = view.findViewById(R.id.btnCat);
         btnDog = view.findViewById(R.id.btnDog);
         ivSetUpTwo = view.findViewById(R.id.ivSetUpTwo);
+        etPetName = view.findViewById(R.id.etPetNameSetUpTwo);
+
         final Resources res = getResources();
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        userRef = firebaseDatabase.getReference("users/" + FirebaseAuth.getInstance().getUid().toString());
+
 
         btnCat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +74,8 @@ public class SetUpTwoFragment extends Fragment {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).mainActivity();
+                userRef.child("pet").setValue(etPetName.getText().toString());
+                ((MainActivity)getActivity()).mainFragment();
             }
         });
 

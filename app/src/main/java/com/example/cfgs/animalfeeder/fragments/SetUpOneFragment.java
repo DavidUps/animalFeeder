@@ -8,23 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.brouding.blockbutton.BlockButton;
 import com.example.cfgs.animalfeeder.R;
 import com.example.cfgs.animalfeeder.activities.MainActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link SetUpOneFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link SetUpOneFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class SetUpOneFragment extends Fragment {
 
     BlockButton btnNext;
     private OnFragmentInteractionListener mListener;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference userRef;
+    EditText etRaspberryIp;
 
     public SetUpOneFragment() {
     }
@@ -44,12 +43,16 @@ public class SetUpOneFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_set_up_one, container, false);
 
         btnNext = view.findViewById(R.id.btnSetUpOne);
+        etRaspberryIp = view.findViewById(R.id.etRaspberryIpSetUp);
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        userRef = firebaseDatabase.getReference("users/" + FirebaseAuth.getInstance().getUid().toString());
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                userRef.child("raspberryIp").setValue(etRaspberryIp.getText().toString());
                 ((MainActivity)getActivity()).setUpTwoFragment();
-
             }
         });
 

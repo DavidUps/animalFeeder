@@ -42,6 +42,7 @@ public class ChatFragment extends Fragment {
     FloatingActionButton btnSend;
     EditText etMessage;
     RecyclerView rvMessage;
+    String pet;
 
     private OnFragmentInteractionListener mListener;
 
@@ -63,6 +64,8 @@ public class ChatFragment extends Fragment {
         firebaseStorage  = FirebaseStorage.getInstance("gs://animalfeeder-cae79.appspot.com");
         userRef = firebaseDatabase.getReference("users").child(FirebaseAuth.getInstance().getUid().toString());
         messageAdapter = new MessageAdapter(alMessages, getContext());
+
+
     }
 
     @Override
@@ -91,12 +94,9 @@ public class ChatFragment extends Fragment {
 
     private void updateMessage() {
         if(!etMessage.getText().toString().equals("")){
-            /*String name = "", pet = "";
-            userRef.child("name").setValue(name);
-            userRef.child("pet").setValue(pet);*/
             Messages message = new Messages(
-                    "david",
-                    "pollas",
+                     FirebaseAuth.getInstance().getCurrentUser().getDisplayName().toString(),
+                    "dog",
                     etMessage.getText().toString(),
                     "profileImage/"+FirebaseAuth.getInstance().getCurrentUser().getUid().toString()+".jpg");
             Map<String, Object> messageValues = message.toMap();

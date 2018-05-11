@@ -112,7 +112,7 @@ public class ProfileFragment extends Fragment {
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             public void onComplete(@NonNull Task<Void> task) {
                                 Toast.makeText(getActivity(), R.string.correct_logout, Toast.LENGTH_SHORT).show();
-                                ((MainActivity) getActivity()).mainActivity();
+                                ((MainActivity) getActivity()).loginActivity();
                             }
                         });
             }
