@@ -127,6 +127,9 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/chat"/>
-
     </com.brouding.blockbutton.BlockButton>
+    <WebView
+        android:id="@+id/motor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
 </android.support.constraint.ConstraintLayout>

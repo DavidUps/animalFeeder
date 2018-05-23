@@ -38,6 +38,7 @@ public class ChatFragment extends Fragment {
     ArrayList<Messages> alMessages = new ArrayList<>();
     MessageAdapter messageAdapter;
     DatabaseReference userRef;
+    DatabaseReference petChatRef;
 
     FloatingActionButton btnSend;
     EditText etMessage;
@@ -62,9 +63,22 @@ public class ChatFragment extends Fragment {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseStorage  = FirebaseStorage.getInstance("gs://animalfeeder-cae79.appspot.com");
-        userRef = firebaseDatabase.getReference("users").child(FirebaseAuth.getInstance().getUid().toString());
+        userRef = firebaseDatabase.getReference("users").child(FirebaseAuth.getInstance().getUid().toString()).child("pet");
+
         messageAdapter = new MessageAdapter(alMessages, getContext());
 
+        ValueEventListener petListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                pet = dataSnapshot.getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        userRef.addValueEventListener(petListener);
 
     }
 
@@ -96,7 +110,7 @@ public class ChatFragment extends Fragment {
         if(!etMessage.getText().toString().equals("")){
             Messages message = new Messages(
                      FirebaseAuth.getInstance().getCurrentUser().getDisplayName().toString(),
-                    "dog",
+                    pet,
                     etMessage.getText().toString(),
                     "profileImage/"+FirebaseAuth.getInstance().getCurrentUser().getUid().toString()+".jpg");
             Map<String, Object> messageValues = message.toMap();
