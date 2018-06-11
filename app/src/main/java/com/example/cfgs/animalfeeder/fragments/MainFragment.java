@@ -142,7 +142,7 @@ public class MainFragment extends Fragment {
 
                Toast.makeText(getActivity(), "Day: " + currentDay + " Hour: " + currentHour, Toast.LENGTH_SHORT).show();
 
-               motor.loadUrl("http://192.168.1.7");
+               motor.loadUrl("http:172.20.10.7");
            }
        });
        return view;

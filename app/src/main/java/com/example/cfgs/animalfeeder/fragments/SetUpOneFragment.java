@@ -51,6 +51,7 @@ public class SetUpOneFragment extends Fragment {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                userRef.child("firstTime").setValue("1");
                 userRef.child("raspberryIp").setValue(etRaspberryIp.getText().toString());
                 ((MainActivity)getActivity()).setUpTwoFragment();
             }

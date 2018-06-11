@@ -40,9 +40,13 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.child("firstTime").getValue() == null ){
                     setUpOneFragment();
-                }else{
+                }else if (dataSnapshot.child("firsTime").getValue() == null || dataSnapshot.child("firsTime").getValue().toString().equals("1")){
+                    setUpTwoFragment();
+                }else if (dataSnapshot.child("firsTime").getValue() == null || !dataSnapshot.child("firsTime").getValue().toString().equals("1")){
                     mainFragment();
                 }
+
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
