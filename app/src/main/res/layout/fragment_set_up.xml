@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="16dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvSetUpOne"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/raspberryIp"
+                android:textSize="28dp"/>
+
+            <ImageView
+                android:id="@+id/ivSetUpOne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/raspberry"
+                app:layout_constraintTop_toBottomOf="@id/tvSetUpOne"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tilRaspberryIpSetUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/ivSetUpOne">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etRaspberryIpSetUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/raspberryIp"
+                    android:inputType="date"/>
+            </android.support.design.widget.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/tvSetUpTwo"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/animal"
+                android:textSize="28dp"/>
+
+            <ImageView
+                android:id="@+id/ivSetUpTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/animal"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.brouding.blockbutton.BlockButton
+                    android:id="@+id/btnDog"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="2dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:buttonColor="@color/blue"
+                    app:buttonDisabledColor="#999999"
+                    app:buttonDisabledGapColor="@color/cardview_dark_background"
+                    app:buttonGapColor="@color/cardview_dark_background"
+                    app:pushDepthDp="6">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dog"/>
+                </com.brouding.blockbutton.BlockButton>
+
+                <com.brouding.blockbutton.BlockButton
+                    android:id="@+id/btnCat"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="2dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:buttonColor="@color/blue"
+                    app:buttonDisabledColor="#999999"
+                    app:buttonDisabledGapColor="@color/cardview_dark_background"
+                    app:buttonGapColor="@color/cardview_dark_background"
+                    app:pushDepthDp="6">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cat"/>
+                </com.brouding.blockbutton.BlockButton>
+            </LinearLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tilPetName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/ivSetUpOne">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etPetNameSetUpTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/raspberryIp"
+                    android:inputType="date"/>
+            </android.support.design.widget.TextInputLayout>
+
+
+            <com.brouding.blockbutton.BlockButton
+                android:id="@+id/btnSetUpTwo"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:buttonColor="@color/blue"
+                app:buttonDisabledColor="#999999"
+                app:buttonDisabledGapColor="@color/cardview_dark_background"
+                app:buttonGapColor="@color/cardview_dark_background"
+                app:pushDepthDp="6">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fui_next_default"
+                    android:textAllCaps="false" />
+            </com.brouding.blockbutton.BlockButton>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

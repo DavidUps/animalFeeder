@@ -11,7 +11,6 @@ import com.example.cfgs.animalfeeder.fragments.ListFragment;
 import com.example.cfgs.animalfeeder.fragments.MainFragment;
 import com.example.cfgs.animalfeeder.fragments.ProfileFragment;
 import com.example.cfgs.animalfeeder.fragments.SetUpOneFragment;
-import com.example.cfgs.animalfeeder.fragments.SetUpTwoFragment;
 import com.example.cfgs.animalfeeder.fragments.SettingsFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -33,20 +32,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         database = FirebaseDatabase.getInstance();
-        DatabaseReference profileRef = database.getReference("users").child(FirebaseAuth.getInstance().getUid().toString());
+        final DatabaseReference profileRef = database.getReference("users").child(FirebaseAuth.getInstance().getUid().toString());
 
         profileRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.child("firstTime").getValue() == null ){
+                if (dataSnapshot.child("firstTime").getValue() == null){
                     setUpOneFragment();
-                }else if (dataSnapshot.child("firsTime").getValue() == null || dataSnapshot.child("firsTime").getValue().toString().equals("1")){
-                    setUpTwoFragment();
-                }else if (dataSnapshot.child("firsTime").getValue() == null || !dataSnapshot.child("firsTime").getValue().toString().equals("1")){
+                }else{
                     mainFragment();
                 }
-
-
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -113,13 +108,6 @@ public class MainActivity extends AppCompatActivity {
      */
     public void setUpOneFragment(){
         getSupportFragmentManager().beginTransaction().replace(R.id.containerFragment, new SetUpOneFragment()).addToBackStack("OneFragment").commit();
-    }
-
-    /**
-     * Open Set Up Two
-     */
-    public void setUpTwoFragment(){
-        getSupportFragmentManager().beginTransaction().replace(R.id.containerFragment, new SetUpTwoFragment()).addToBackStack("TwoFragment").commit();
     }
 
     /**
