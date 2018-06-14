@@ -91,8 +91,6 @@ public class MainActivity extends AppCompatActivity {
      */
     public void mainFragment(){
         DatabaseReference profileRef = database.getReference("users").child(FirebaseAuth.getInstance().getUid().toString());
-        profileRef.child("firstTime").setValue("1");
-
         getSupportFragmentManager().beginTransaction().replace(R.id.containerFragment, new MainFragment()).addToBackStack("main").commit();
     }
 
